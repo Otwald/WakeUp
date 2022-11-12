@@ -25,8 +25,8 @@ func _process(_delta):
 
 func get_input()->bool:
     var out : bool = false;
-    var but_a : bool = Input.is_action_just_released("mash_a");
-    var but_b : bool =  Input.is_action_just_released("mash_b");
+    var but_a : bool = Input.is_action_just_pressed("mash_a");
+    var but_b : bool =  Input.is_action_just_pressed("mash_b");
     if last_pressed != 'a' and but_a:
         last_pressed = 'a';
         out = true;
@@ -34,7 +34,7 @@ func get_input()->bool:
         last_pressed = 'b';
         out = true;
     if but_a and but_b :
-        print("both)");
+        print("both");
         out = false;
     return out
 
