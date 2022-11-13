@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://PlayScene/PlayScene.gd" type="Script" id=1]
 [ext_resource path="res://PlayScene/PlayScreen.png" type="Texture" id=2]
+[ext_resource path="res://PlayScene/Hand.png" type="Texture" id=3]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -34,23 +35,39 @@ script = ExtResource( 1 )
 wait_time = 22.0
 autostart = true
 
-[node name="Win" type="Label" parent="."]
+[node name="AlarmClock" type="AnimatedSprite" parent="."]
 visible = false
-margin_left = 292.0
-margin_top = 155.0
-margin_right = 332.0
-margin_bottom = 169.0
-text = "You re Win"
-
-[node name="Lose" type="Label" parent="."]
-visible = false
-margin_right = 40.0
-margin_bottom = 14.0
-text = "You re Loser"
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 128, 128 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 5 )
+
+[node name="Hand" type="Sprite" parent="."]
+position = Vector2( 224, 104 )
+texture = ExtResource( 3 )
+hframes = 3
+
+[node name="Paremeter" type="Node" parent="."]
+
+[node name="Start" type="Node2D" parent="Paremeter"]
+position = Vector2( 224, 104 )
+
+[node name="End" type="Node2D" parent="Paremeter"]
+position = Vector2( 56, 104 )
+
+[node name="EndScrenes" type="Node" parent="."]
+
+[node name="Win" type="Label" parent="EndScrenes"]
+visible = false
+margin_left = 292.0
+margin_top = 155.0
+margin_right = 361.0
+margin_bottom = 169.0
+text = "You re Win"
+
+[node name="Lose" type="Label" parent="EndScrenes"]
+visible = false
+margin_right = 79.0
+margin_bottom = 14.0
+text = "You re Loser"
 
 [connection signal="timeout" from="Alarm" to="." method="_on_Alarm_timeout"]
