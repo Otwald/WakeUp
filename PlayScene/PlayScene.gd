@@ -11,7 +11,23 @@ var active_scene : Dictionary;
 var play_screens : Dictionary = {
 	"scene1" : {
 		"ress" : preload("res://PlayScene/Scenes/Scene1.tscn"),
-		"length" : 240-64
+		"length" : 224-64
+	},
+	"scene2" : {
+		"ress" : preload("res://PlayScene/Scenes/Scene2.tscn"),
+		"length" : 232-40
+	},
+	"scene3" : {
+		"ress" : preload("res://PlayScene/Scenes/Scene3.tscn"),
+		"length" : 232-24
+	},
+	"scene4" : {
+		"ress" : preload("res://PlayScene/Scenes/Scene4.tscn"),
+		"length" : 232-24
+	},
+	"scene5" : {
+		"ress" : preload("res://PlayScene/Scenes/Scene5.tscn"),
+		"length" : 232-24
 	},
 	"sceneend" : {
 		"ress" : preload("res://PlayScene/Scenes/SceneEnd.tscn"),
@@ -61,6 +77,7 @@ func check_end():
 		return;
 	if limit <= progress:
 		alarm.stop();
+		player.hide();
 		win.show();
 
 func get_input()->bool:

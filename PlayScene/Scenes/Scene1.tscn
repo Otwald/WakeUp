@@ -22,12 +22,13 @@ frames = SubResource( 1 )
 [node name="Sleeper" type="Sprite" parent="."]
 position = Vector2( 128, 128 )
 scale = Vector2( 4, 4 )
+z_index = 2
 texture = ExtResource( 2 )
 
 [node name="Paremeter" type="Node" parent="."]
 
 [node name="Start" type="Node2D" parent="Paremeter"]
-position = Vector2( 240, 176 )
+position = Vector2( 224, 176 )
 
 [node name="End" type="Node2D" parent="Paremeter"]
 position = Vector2( 64, 176 )

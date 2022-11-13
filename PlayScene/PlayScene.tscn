@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://PlayScene/PlayScene.gd" type="Script" id=1]
 [ext_resource path="res://PlayScene/Hand.png" type="Texture" id=3]
 [ext_resource path="res://PlayScene/Arm.png" type="Texture" id=4]
 [ext_resource path="res://PlayScene/LongArm.png" type="Texture" id=5]
-[ext_resource path="res://PlayScene/ArmBorder.png" type="Texture" id=6]
 [ext_resource path="res://PlayScene/EndScene.png" type="Texture" id=7]
 [ext_resource path="res://PlayScene/LoseScene.png" type="Texture" id=8]
 [ext_resource path="res://PlayScene/Button/SnoozeHover.png" type="Texture" id=9]
@@ -21,12 +20,9 @@ autostart = true
 
 [node name="Scenes" type="Node" parent="."]
 
-[node name="ArmBorder" type="Sprite" parent="."]
-position = Vector2( 224, 104 )
-texture = ExtResource( 6 )
-
 [node name="Player" type="Node2D" parent="."]
 position = Vector2( 224, 104 )
+z_index = 1
 
 [node name="Hand" type="Sprite" parent="Player"]
 texture = ExtResource( 3 )
@@ -57,6 +53,7 @@ offset = Vector2( -40, -8 )
 
 [node name="Win" type="Node2D" parent="EndScrenes"]
 visible = false
+z_index = 5
 
 [node name="End" type="Sprite" parent="EndScrenes/Win"]
 position = Vector2( 128, 128 )
@@ -74,6 +71,7 @@ texture_hover = ExtResource( 9 )
 
 [node name="Lose" type="Node2D" parent="EndScrenes"]
 visible = false
+z_index = 5
 
 [node name="End" type="Sprite" parent="EndScrenes/Lose"]
 position = Vector2( 128, 128 )
