@@ -1,32 +1,16 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://PlayScene/PlayScene.gd" type="Script" id=1]
-[ext_resource path="res://PlayScene/PlayScreen.png" type="Texture" id=2]
 [ext_resource path="res://PlayScene/Hand.png" type="Texture" id=3]
-
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 2 )
-region = Rect2( 64, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 2 )
-region = Rect2( 128, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 2 )
-region = Rect2( 192, 0, 64, 64 )
-
-[sub_resource type="SpriteFrames" id=5]
-animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
+[ext_resource path="res://PlayScene/Arm.png" type="Texture" id=4]
+[ext_resource path="res://PlayScene/LongArm.png" type="Texture" id=5]
+[ext_resource path="res://PlayScene/ArmBorder.png" type="Texture" id=6]
+[ext_resource path="res://PlayScene/EndScene.png" type="Texture" id=7]
+[ext_resource path="res://PlayScene/LoseScene.png" type="Texture" id=8]
+[ext_resource path="res://PlayScene/Button/SnoozeHover.png" type="Texture" id=9]
+[ext_resource path="res://PlayScene/Button/SnoozeNorm.png" type="Texture" id=10]
+[ext_resource path="res://PlayScene/Button/NewDayhover.png" type="Texture" id=11]
+[ext_resource path="res://PlayScene/Button/NewDayNorm.png" type="Texture" id=12]
 
 [node name="PlayScene" type="Node2D"]
 script = ExtResource( 1 )
@@ -35,39 +19,76 @@ script = ExtResource( 1 )
 wait_time = 22.0
 autostart = true
 
-[node name="AlarmClock" type="AnimatedSprite" parent="."]
-visible = false
-position = Vector2( 128, 128 )
-scale = Vector2( 4, 4 )
-frames = SubResource( 5 )
+[node name="Scenes" type="Node" parent="."]
 
-[node name="Hand" type="Sprite" parent="."]
+[node name="ArmBorder" type="Sprite" parent="."]
 position = Vector2( 224, 104 )
+texture = ExtResource( 6 )
+
+[node name="Player" type="Node2D" parent="."]
+position = Vector2( 224, 104 )
+
+[node name="Hand" type="Sprite" parent="Player"]
 texture = ExtResource( 3 )
 hframes = 3
 
-[node name="Paremeter" type="Node" parent="."]
+[node name="Arm1" type="Sprite" parent="Player"]
+position = Vector2( 64, 0 )
+texture = ExtResource( 4 )
 
-[node name="Start" type="Node2D" parent="Paremeter"]
-position = Vector2( 224, 104 )
+[node name="Arm2" type="Sprite" parent="Player"]
+position = Vector2( 168, 8 )
+texture = ExtResource( 5 )
+offset = Vector2( -40, -8 )
 
-[node name="End" type="Node2D" parent="Paremeter"]
-position = Vector2( 56, 104 )
+[node name="Arm3" type="Sprite" parent="Player"]
+position = Vector2( 232, 5 )
+scale = Vector2( 1, -1 )
+texture = ExtResource( 5 )
+offset = Vector2( -40, -8 )
+
+[node name="Arm4" type="Sprite" parent="Player"]
+position = Vector2( 216, 8 )
+scale = Vector2( -1, 1 )
+texture = ExtResource( 5 )
+offset = Vector2( -40, -8 )
 
 [node name="EndScrenes" type="Node" parent="."]
 
-[node name="Win" type="Label" parent="EndScrenes"]
+[node name="Win" type="Node2D" parent="EndScrenes"]
 visible = false
-margin_left = 292.0
-margin_top = 155.0
-margin_right = 361.0
-margin_bottom = 169.0
-text = "You re Win"
 
-[node name="Lose" type="Label" parent="EndScrenes"]
+[node name="End" type="Sprite" parent="EndScrenes/Win"]
+position = Vector2( 128, 128 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 7 )
+
+[node name="Restart" type="TextureButton" parent="EndScrenes/Win"]
+margin_left = 64.0
+margin_top = 24.0
+margin_right = 98.0
+margin_bottom = 37.0
+rect_scale = Vector2( 4, 4 )
+texture_normal = ExtResource( 10 )
+texture_hover = ExtResource( 9 )
+
+[node name="Lose" type="Node2D" parent="EndScrenes"]
 visible = false
-margin_right = 79.0
-margin_bottom = 14.0
-text = "You re Loser"
+
+[node name="End" type="Sprite" parent="EndScrenes/Lose"]
+position = Vector2( 128, 128 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 8 )
+
+[node name="Restart" type="TextureButton" parent="EndScrenes/Lose"]
+margin_left = 64.0
+margin_top = 24.0
+margin_right = 98.0
+margin_bottom = 37.0
+rect_scale = Vector2( 4, 4 )
+texture_normal = ExtResource( 12 )
+texture_hover = ExtResource( 11 )
 
 [connection signal="timeout" from="Alarm" to="." method="_on_Alarm_timeout"]
+[connection signal="pressed" from="EndScrenes/Win/Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="EndScrenes/Lose/Restart" to="." method="_on_Restart_pressed"]

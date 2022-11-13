@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PlayScreen.png-8fd5f254c169cd4e2638e712ae19ed1a.stex"
+path="res://.import/BettScene.png-18483463359a26952c1d02aae4416ea2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://PlayScene/PlayScreen.png"
-dest_files=[ "res://.import/PlayScreen.png-8fd5f254c169cd4e2638e712ae19ed1a.stex" ]
+source_file="res://PlayScene/Scenes/BettScene.png"
+dest_files=[ "res://.import/BettScene.png-18483463359a26952c1d02aae4416ea2.stex" ]
 
 [params]
 

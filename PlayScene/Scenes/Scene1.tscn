@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://PlayScene/Scenes/BettScene.png" type="Texture" id=1]
+[ext_resource path="res://PlayScene/Scenes/SleeperPart.png" type="Texture" id=2]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Scene1" type="Node2D"]
+
+[node name="BG" type="AnimatedSprite" parent="."]
+position = Vector2( 128, 128 )
+scale = Vector2( 4, 4 )
+z_index = -1
+frames = SubResource( 1 )
+
+[node name="Sleeper" type="Sprite" parent="."]
+position = Vector2( 128, 128 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 2 )
+
+[node name="Paremeter" type="Node" parent="."]
+
+[node name="Start" type="Node2D" parent="Paremeter"]
+position = Vector2( 240, 176 )
+
+[node name="End" type="Node2D" parent="Paremeter"]
+position = Vector2( 64, 176 )

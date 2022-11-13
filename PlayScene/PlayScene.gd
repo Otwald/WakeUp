@@ -1,32 +1,39 @@
 extends Node2D
 
+signal restart_pressed
 
 # Sinn des Spiels, Wecker Klingelt 22 sec um dich zuwecken, schalte in Aus ! 2 Button Mashing
 var progress : int = 0;
+var hand_move : int;
 var last_pressed : String;
 var scenes : Array = []
 var active_scene : Dictionary;
-var hand_move : int;
-#the gameover Timer
-onready var alarm : Timer = $Alarm;
-onready var start : Node2D =$Paremeter/Start
-onready var end : Node2D = $Paremeter/End;
-onready var win : Label = $EndScrenes/Win;
-onready var lose : Label = $EndScrenes/Lose;
-onready var hand : Sprite = $Hand
-onready var play_screens : Dictionary = {
+var play_screens : Dictionary = {
 	"scene1" : {
-		"ress" : $AlarmClock,
-		"start": 224,
-		"end": 56,
+		"ress" : preload("res://PlayScene/Scenes/Scene1.tscn"),
+		"length" : 240-64
+	},
+	"sceneend" : {
+		"ress" : preload("res://PlayScene/Scenes/SceneEnd.tscn"),
 		"length" : 224-56
 	}
 }
-export var limit :int = 5;
+var end : Node2D;
+var start : Node2D;
+#the gameover Timer
+onready var alarm : Timer = $Alarm;
+onready var win : Node2D = $EndScrenes/Win;
+onready var lose : Node2D = $EndScrenes/Lose;
+onready var player : Node2D = $Player;
+onready var hand : Sprite = $Player/Hand;
+
+export var limit :int = 100;
 
 
 
 func _ready():
+	if connect("restart_pressed", get_parent(), "_on_Restart_pressed"):
+		pass
 	scenes = play_screens.keys();
 	var total_length : int = 0;
 	for scene in scenes:
@@ -40,15 +47,17 @@ func _ready():
 func _process(_delta):
 	if get_input():
 		progress += 1;
-		hand.position.x -= hand_move;
+		player.position.x -= hand_move;
 	check_end();
 
 
 
 func check_end():
-	if hand.position.x > end.position.x:
+	if player.position.x > end.position.x:
 		return;
 	if scenes.size() > 0:
+		$Scenes.get_child(0).queue_free();
+		_set_scene_parameters();
 		return;
 	if limit <= progress:
 		alarm.stop();
@@ -77,11 +86,16 @@ func get_input()->bool:
 func _set_scene_parameters():
 	active_scene = play_screens[scenes[0]]
 	scenes.pop_front();
-	active_scene.ress.show();
-	start.position.x = active_scene.start
-	end.position.x = active_scene.end;
-	hand.position = start.position
+	var init_scene = active_scene.ress.instance();
+	$Scenes.add_child(init_scene);
+	start = init_scene.get_node("Paremeter/Start");
+	end = init_scene.get_node("Paremeter/End");
+	player.position = start.position
 
 
 func _on_Alarm_timeout():
 	lose.show();
+
+
+func _on_Restart_pressed():
+	emit_signal("restart_pressed");
