@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/tspt_alarm_clock_ticking_loop_002.mp3-92615d10f7729b79c4329cbb781014c3.mp3str"
+
+[deps]
+
+source_file="res://Asset/tspt_alarm_clock_ticking_loop_002.mp3"
+dest_files=[ "res://.import/tspt_alarm_clock_ticking_loop_002.mp3-92615d10f7729b79c4329cbb781014c3.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

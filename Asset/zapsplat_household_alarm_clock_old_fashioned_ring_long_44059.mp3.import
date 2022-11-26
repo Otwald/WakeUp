@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_household_alarm_clock_old_fashioned_ring_long_44059.mp3-79941d0994ce38a7bdc07ae26fb0b012.mp3str"
+
+[deps]
+
+source_file="res://Asset/zapsplat_household_alarm_clock_old_fashioned_ring_long_44059.mp3"
+dest_files=[ "res://.import/zapsplat_household_alarm_clock_old_fashioned_ring_long_44059.mp3-79941d0994ce38a7bdc07ae26fb0b012.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

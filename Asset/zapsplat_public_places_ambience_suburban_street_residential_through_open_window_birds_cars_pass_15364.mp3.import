@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_public_places_ambience_suburban_street_residential_through_open_window_birds_cars_pass_15364.mp3-0332f89b4ed5a433e9515ae95a56716b.mp3str"
+
+[deps]
+
+source_file="res://Asset/zapsplat_public_places_ambience_suburban_street_residential_through_open_window_birds_cars_pass_15364.mp3"
+dest_files=[ "res://.import/zapsplat_public_places_ambience_suburban_street_residential_through_open_window_birds_cars_pass_15364.mp3-0332f89b4ed5a433e9515ae95a56716b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

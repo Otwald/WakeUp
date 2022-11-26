@@ -5,6 +5,7 @@ signal restart_pressed
 # Sinn des Spiels, Wecker Klingelt 22 sec um dich zuwecken, schalte in Aus ! 2 Button Mashing
 var progress : int = 0;
 var hand_move : int;
+var alarmclock_inc : float;
 var last_pressed : String;
 var scenes : Array = []
 var active_scene : Dictionary;
@@ -51,6 +52,8 @@ func _ready():
 	if connect("restart_pressed", get_parent(), "_on_Restart_pressed"):
 		pass
 	scenes = play_screens.keys();
+	alarmclock_inc = (MusicController.get_volume()  *-1)/ scenes.size();
+	print(MusicController.get_volume())
 	var total_length : int = 0;
 	for scene in scenes:
 		total_length += play_screens[scene].length
@@ -74,8 +77,10 @@ func check_end():
 	if scenes.size() > 0:
 		$Scenes.get_child(0).queue_free();
 		_set_scene_parameters();
+		_set_Alarm_Volume();
 		return;
 	if limit <= progress:
+		MusicController.end_sound(true);
 		alarm.stop();
 		player.hide();
 		win.show();
@@ -111,8 +116,15 @@ func _set_scene_parameters():
 
 
 func _on_Alarm_timeout():
+	MusicController.end_sound();
 	lose.show();
 
 
 func _on_Restart_pressed():
 	emit_signal("restart_pressed");
+
+
+# wraps the increase of the AlarmClockVolume
+func _set_Alarm_Volume():
+	var curr_vol : float = MusicController.get_volume();
+	MusicController.set_volume(curr_vol + alarmclock_inc);

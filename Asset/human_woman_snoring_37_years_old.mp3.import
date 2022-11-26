@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/human_woman_snoring_37_years_old.mp3-f613f87423c41db3df8e1b8e558ef72d.mp3str"
+
+[deps]
+
+source_file="res://Asset/human_woman_snoring_37_years_old.mp3"
+dest_files=[ "res://.import/human_woman_snoring_37_years_old.mp3-f613f87423c41db3df8e1b8e558ef72d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

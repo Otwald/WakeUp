@@ -36,7 +36,6 @@ script = ExtResource( 4 )
 position = Vector2( 128, 128 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 5 )
-playing = true
 
 [node name="Start" type="TextureButton" parent="."]
 anchor_left = 0.25

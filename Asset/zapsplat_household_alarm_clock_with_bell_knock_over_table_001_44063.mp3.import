@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_household_alarm_clock_with_bell_knock_over_table_001_44063.mp3-3af34c74d5d82cb8ecc503301d56b9dd.mp3str"
+
+[deps]
+
+source_file="res://Asset/zapsplat_household_alarm_clock_with_bell_knock_over_table_001_44063.mp3"
+dest_files=[ "res://.import/zapsplat_household_alarm_clock_with_bell_knock_over_table_001_44063.mp3-3af34c74d5d82cb8ecc503301d56b9dd.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

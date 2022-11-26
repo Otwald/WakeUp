@@ -14,6 +14,10 @@ config/name="WakeUp"
 run/main_scene="res://_Root.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+MusicController="*res://MusicController/MusicController.tscn"
+
 [display]
 
 window/size/width=256
